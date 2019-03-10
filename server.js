@@ -67,6 +67,21 @@ targetRoutes.route("/update/:id").post(function(req, res) {
   });
 });
 
+targetRoutes.route("/delete/:id").delete(function(req, res) {
+  Target.findOneAndDelete({ _id: req.params.id }, function(err, target) {
+    if (!target) res.status(404).send("data is not found");
+    else
+      target
+        .save()
+        .then(target => {
+          res.json("Target deleted :()");
+        })
+        .catch(err => {
+          res.status(400).send("Delete not possible");
+        });
+  });
+});
+
 app.use("/targets", targetRoutes);
 
 app.listen(PORT, function() {
