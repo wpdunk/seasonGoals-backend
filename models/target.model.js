@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-let Target = new Schema({
+
+let TargetSchema = new Schema({
   target_description: {
     type: String
   },
@@ -11,4 +12,4 @@ let Target = new Schema({
     type: Boolean
   }
 });
-module.exports = mongoose.model("Target", Target);
+module.exports = Target = mongoose.model("Targets", TargetSchema);
